@@ -39,8 +39,8 @@ export class HttpClientService {
     const options = {headers, body, params, withCredentials};
 
     return this.httpClient.request(method, resourceUrl, options).pipe(
-      catchError((err: HttpErrorResponse) => throwError(this.httpError.handleError(err))),
-      map((r: any) => r && r.payload));
+      catchError((err: HttpErrorResponse) => throwError(this.httpError.handleError(err)))
+    );
   }
 
   private buildHeaders(): HttpHeaders {
