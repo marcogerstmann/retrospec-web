@@ -13,10 +13,21 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Node $
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Node ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: $
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli > /dev/null
 
     - name: Run npm install
       run: npm install
@@ -25,4 +36,4 @@ jobs:
       run: ng lint
 
     - name: Run ng test
-      run: ng test --code-coverage --watch=false --no-progress
+      run: ng test --code-coverage --watch=false --no-progress --browsers=ChromeHeadless
