@@ -13,6 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Puppeteer Container
+      uses: ianwalter/puppeteer@v2.0.0
+
     - name: Cache node modules
       uses: actions/cache@v1
       with:
@@ -28,7 +31,7 @@ jobs:
 
     - name: Install Angular CLI
       run: npm install -g @angular/cli > /dev/null
-      
+
     - name: Run npm install
       run: npm install
 
