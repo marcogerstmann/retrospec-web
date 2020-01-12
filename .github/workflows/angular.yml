@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run ng lint
+      run: ng lint
+    - name: Run ng test
+      run: ng test --code-coverage --watch=false --no-progress
