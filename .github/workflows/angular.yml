@@ -6,12 +6,23 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
+
+    - name: Node $
+      uses: actions/setup-node@v1
+      with:
+        node-version: $
+
     - name: Run npm install
       run: npm install
+
     - name: Run ng lint
       run: ng lint
+
     - name: Run ng test
       run: ng test --code-coverage --watch=false --no-progress
