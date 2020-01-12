@@ -26,6 +26,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli > /dev/null
+      
     - name: Run npm install
       run: npm install
 
