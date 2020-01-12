@@ -13,9 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Set up chromedriver
-      uses: nanasess/setup-chromedriver@v1.0.1
-
     - name: Cache node modules
       uses: actions/cache@v1
       with:
@@ -39,4 +36,4 @@ jobs:
       run: ng lint
 
     - name: Run ng test
-      run: ng test --code-coverage --watch=false --no-progress
+      run: ng test --code-coverage --watch=false --no-progress --browsers=ChromeHeadless
