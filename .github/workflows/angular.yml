@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Run npm install
+      run: npm install
     - name: Run ng lint
       run: ng lint
     - name: Run ng test
