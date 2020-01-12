@@ -19,7 +19,7 @@ export class HttpExceptionHandlerService {
   private readonly genericWarnings: { [code: number]: HttpWarningDialogConfig } = {
     [0]: {
       title: 'Application Offline',
-      message: 'Your computer appears to be offline. XVELA features requiring network connectivity will be limited.'
+      message: 'Your computer appears to be offline.'
     },
     [HttpStatus.UNAUTHORIZED]: {
       title: 'Login Required',
