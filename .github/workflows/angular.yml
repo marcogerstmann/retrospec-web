@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Puppeteer Container
-      uses: ianwalter/puppeteer@v2.0.0
+    - name: Set up chromedriver
+      uses: nanasess/setup-chromedriver@v1.0.1
 
     - name: Cache node modules
       uses: actions/cache@v1
