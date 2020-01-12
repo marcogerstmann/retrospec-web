@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {HabitListComponent} from './habit-list/habit-list.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'habit-list'},
+  {path: '', redirectTo: 'habit-list', pathMatch: 'full'},
   {path: 'habit-list', component: HabitListComponent}
 ];
 
