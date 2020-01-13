@@ -1,12 +1,31 @@
-import { TestBed } from '@angular/core/testing';
-
-import { HttpExceptionHandlerService } from './http-exception-handler.service';
+import {TestBed} from '@angular/core/testing';
+import {HttpExceptionHandlerService} from './http-exception-handler.service';
+import {LoggingService} from './logging.service';
+import {Mock, MockingUtil} from '../testing/mocking.util';
 
 describe('HttpExceptionHandlerService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: HttpExceptionHandlerService;
+  let loggingServiceMock: Mock<LoggingService>;
 
-  it('should be created', () => {
-    const service: HttpExceptionHandlerService = TestBed.get(HttpExceptionHandlerService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        HttpExceptionHandlerService,
+        MockingUtil.createMockProvider(LoggingService)
+      ]
+    });
+
+    service = TestBed.get(HttpExceptionHandlerService);
+    loggingServiceMock = TestBed.get(LoggingService);
+
+    spyOn(window, 'alert').and.stub();
+  });
+
+  describe('#handleError', () => {
+    it('should call the logging service and alert', () => {
+      service.handleError({} as any);
+      expect(loggingServiceMock.error).toHaveBeenCalled();
+      expect(window.alert).toHaveBeenCalled();
+    });
   });
 });
