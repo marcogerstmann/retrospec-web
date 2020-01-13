@@ -1,11 +1,26 @@
 import {TestBed} from '@angular/core/testing';
 import {HabitService} from './habit.service';
+import {Mock, MockingUtil} from '../../testing/mocking.util';
+import {HttpClientService} from '../../services/http-client.service';
 
 describe('HabitService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: HabitService;
+  let httpClientServiceMock: Mock<HttpClientService>;
 
-  it('should be created', () => {
-    const service: HabitService = TestBed.get(HabitService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        HabitService,
+        MockingUtil.createMockProvider(HttpClientService)
+      ]
+    });
+
+    service = TestBed.get(HabitService);
+    httpClientServiceMock = TestBed.get(HttpClientService);
+  });
+
+  it('#findAll should call the correct endpoint', () => {
+    service.findAll();
+    expect(httpClientServiceMock.get).toHaveBeenCalledWith('v1/habits');
   });
 });
