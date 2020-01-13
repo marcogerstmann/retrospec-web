@@ -1,1 +1,5 @@
-<p>habit-list works!</p>
+<div class="habit-list">
+  <ul>
+    <li *ngFor="let habit of habits | async">{{habit.name}}</li>
+  </ul>
+</div>
