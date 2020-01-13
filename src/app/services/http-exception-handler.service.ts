@@ -86,7 +86,6 @@ export class HttpExceptionHandlerService {
   private getWarningDialogConfig(error: HttpErrorResponse): HttpWarningDialogConfig {
     let config: HttpWarningDialogConfig = this.genericWarnings[error && error.status] || this.genericWarnings[0];
     if (error && error.error && error.error.errors && error.status === HttpStatus.UNPROCESSABLE_ENTITY) {
-      console.log('in the if');
       config = Object.assign({}, config);
       config.message = (error.error.errors || []).map(e => e.message);
     }

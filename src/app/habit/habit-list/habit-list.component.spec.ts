@@ -12,9 +12,7 @@ describe('HabitListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HabitListComponent
-      ],
+      declarations: [HabitListComponent],
       providers: [
         MockingUtil.createMockProvider(HabitService)
       ],

@@ -24,7 +24,7 @@ describe('HttpExceptionHandlerService', () => {
 
   describe('#handleError', () => {
     it('should call the logging service and alert', () => {
-      service.handleError({error: {status: HttpStatus.UNPROCESSABLE_ENTITY, errors: []}} as any);
+      service.handleError({error: {errors: []}, status: HttpStatus.UNPROCESSABLE_ENTITY} as any);
       expect(loggingServiceMock.error).toHaveBeenCalled();
       expect(window.alert).toHaveBeenCalled();
     });
