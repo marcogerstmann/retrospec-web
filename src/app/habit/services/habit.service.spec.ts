@@ -15,8 +15,8 @@ describe('HabitService', () => {
       ]
     });
 
-    service = TestBed.get(HabitService);
-    httpClientServiceMock = TestBed.get(HttpClientService);
+    service = TestBed.inject(HabitService);
+    httpClientServiceMock = TestBed.inject(HttpClientService);
   });
 
   it('#findAll should call the correct endpoint', () => {

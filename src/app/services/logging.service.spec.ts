@@ -16,8 +16,8 @@ describe('LoggingService', () => {
       ]
     });
 
-    service = TestBed.get(LoggingService);
-    configServiceMock = TestBed.get(ConfigService);
+    service = TestBed.inject(LoggingService);
+    configServiceMock = TestBed.inject(ConfigService);
 
     spyOn(console, 'debug').and.stub();
     spyOn(console, 'info').and.stub();

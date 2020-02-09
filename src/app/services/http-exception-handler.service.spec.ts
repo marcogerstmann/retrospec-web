@@ -16,8 +16,8 @@ describe('HttpExceptionHandlerService', () => {
       ]
     });
 
-    service = TestBed.get(HttpExceptionHandlerService);
-    loggingServiceMock = TestBed.get(LoggingService);
+    service = TestBed.inject(HttpExceptionHandlerService);
+    loggingServiceMock = TestBed.inject(LoggingService);
 
     spyOn(window, 'alert').and.stub();
   });
