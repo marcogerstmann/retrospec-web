@@ -22,10 +22,10 @@ describe('HttpClientService', () => {
       ]
     });
 
-    service = TestBed.get(HttpClientService);
-    httpClientMock = TestBed.get(HttpClient);
-    configMock = TestBed.get(ConfigService);
-    httpErrorServiceMock = TestBed.get(HttpExceptionHandlerService);
+    service = TestBed.inject(HttpClientService);
+    httpClientMock = TestBed.inject(HttpClient);
+    configMock = TestBed.inject(ConfigService);
+    httpErrorServiceMock = TestBed.inject(HttpExceptionHandlerService);
 
     httpClientMock.request.and.returnValue(of());
     configMock.apiUrl = 'http://localhost:8080/api/';

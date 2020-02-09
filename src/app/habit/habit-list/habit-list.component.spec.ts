@@ -19,7 +19,7 @@ describe('HabitListComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     });
 
-    habitServiceMock = TestBed.get(HabitService);
+    habitServiceMock = TestBed.inject(HabitService);
 
     fixture = TestBed.createComponent(HabitListComponent);
     component = fixture.componentInstance;
